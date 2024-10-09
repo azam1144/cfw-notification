@@ -1,0 +1,26 @@
+name = "notification"
+main = "src/index.ts"
+compatibility_date = "2024-10-04"
+
+[observability]
+enabled = true
+
+[[kv_namespaces]]
+binding = "NOTIFICATION_KV"
+id = "b81088e7cc284355b66efe52897a79ba"
+
+[env.dev]
+vars.SUBSCRIPTION_WORKER_URL = "http://localhost:8787/api/v0.1"
+vars.INVOICE_WORKER_URL = "http://localhost:34889/api/v0.1"
+vars.PAYMENT_WORKER_URL = "http://localhost:37069/api/v0.1"
+kv_namespaces = [
+    { binding = "NOTIFICATION_KV", id = "b81088e7cc284355b66efe52897a79ba" },
+]
+
+[env.production]
+vars.SUBSCRIPTION_WORKER_URL = "http://subscription.azam-arid1144.workers.dev/api/v0.1"
+vars.INVOICE_WORKER_URL = "http://billing-engine.azam-arid1144.workers.dev/api/v0.1"
+vars.PAYMENT_WORKER_URL = "http://payment-processing.azam-arid1144.workers.dev//api/v0.1"
+kv_namespaces = [
+    { binding = "NOTIFICATION_KV", id = "b81088e7cc284355b66efe52897a79ba" },
+]
